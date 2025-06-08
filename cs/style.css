@@ -1,0 +1,324 @@
+/* --- Global Resets & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #f7f5f2; /* Warm off-white/light beige */
+    --text-color: #4A3B31; /* Deep rich brown */
+    --primary-green: #6B8E23; /* Muted Olive Green */
+    --primary-green-darker: #556B2F; /* Darker Olive for gradients/hovers */
+    --secondary-brown: #8B5A2B; /* Warm mid-tone brown */
+    --secondary-brown-lighter: #A07855; /* Lighter brown for gradients */
+    --border-color: #D4CFC6; /* Light, warm gray-brown for subtle borders */
+    --sidebar-bg-start: #EAE6E1; /* Light warm beige for sidebar gradient */
+    --sidebar-bg-end: #DCD6CD;   /* Slightly darker warm beige for sidebar gradient */
+
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Lora', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-size: 16px;
+}
+
+/* --- Container & Layout --- */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: linear-gradient(to bottom, var(--sidebar-bg-start), var(--sidebar-bg-end));
+    padding: 30px 20px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 40px 50px;
+    margin-left: 280px;
+    max-width: 800px;
+    margin-right: auto;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h1 {
+    font-family: var(--font-secondary);
+    font-size: 1.8em;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.sidebar-header .subtitle {
+    font-size: 0.9em;
+    color: var(--secondary-brown);
+    font-style: italic;
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav li {
+    margin-bottom: 10px;
+}
+
+.main-nav .nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1em;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: 1px solid transparent; /* Placeholder for hover/active border */
+}
+
+.main-nav .nav-link:hover {
+    background: linear-gradient(to right, var(--primary-green), var(--primary-green-darker));
+    color: var(--bg-color);
+    transform: translateX(3px);
+    border-color: var(--primary-green-darker);
+}
+
+.main-nav .nav-link.active {
+    background: linear-gradient(to right, var(--primary-green), var(--primary-green-darker));
+    color: var(--bg-color);
+    font-weight: bold;
+    border-color: var(--primary-green-darker);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8em;
+    color: var(--secondary-brown);
+    text-align: center;
+}
+
+/* --- Content Area Styling --- */
+.page-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--primary-green), var(--secondary-brown));
+}
+
+.page-header h2 {
+    font-family: var(--font-secondary);
+    font-size: 2.5em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.page-header .tagline {
+    font-size: 1.1em;
+    color: var(--secondary-brown);
+    font-style: italic;
+}
+
+article section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.8em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    padding-bottom: 8px; /* Increased padding */
+    border-bottom: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--primary-green) 30%, var(--border-color) 100%);
+}
+
+h4 {
+    font-family: var(--font-secondary);
+    font-size: 1.4em;
+    color: var(--secondary-brown);
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 1.2em; /* Slightly more spacing */
+}
+
+a {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    padding-bottom: 1px; /* space for potential underline effect */
+    border-bottom: 1px solid transparent; /* for subtle hover effect */
+}
+
+a:hover {
+    color: var(--primary-green-darker);
+    border-bottom: 1px solid var(--primary-green-darker);
+    text-shadow: 0 0 1px rgba(107, 142, 35, 0.3); /* Subtle green glow */
+}
+
+.content-area article a { /* Links within main content */
+    /* If you want different styling for content links vs nav links */
+}
+
+ul, ol {
+    margin-left: 25px; /* Slightly more indent */
+    margin-bottom: 1.2em;
+}
+
+li {
+    margin-bottom: 0.6em;
+}
+
+blockquote {
+    margin: 25px 0;
+    padding: 20px 25px;
+    border-left: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to bottom, var(--primary-green), var(--secondary-brown));
+    background-color: #fdfcfb; /* Slightly different from main BG for subtle depth */
+    font-style: italic;
+    color: #5c4d42; /* Slightly lighter brown for quote text */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.03);
+}
+
+blockquote footer {
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 0.9em;
+    text-align: right;
+    color: var(--secondary-brown);
+}
+
+hr.section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 50px 0; /* More spacing */
+}
+
+figure {
+    margin: 25px 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+figure figcaption {
+    font-size: 0.9em;
+    color: var(--secondary-brown-lighter);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.chapter-pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+.chapter-pagination a {
+    padding: 8px 15px;
+    border: 1px solid var(--secondary-brown-lighter);
+    border-radius: 4px;
+    color: var(--secondary-brown);
+    transition: all 0.3s ease;
+}
+.chapter-pagination a:hover {
+    background: linear-gradient(to right, var(--secondary-brown-lighter), var(--secondary-brown));
+    color: var(--bg-color);
+    border-color: var(--secondary-brown);
+    text-decoration: none; /* remove underline from general 'a:hover' */
+}
+
+
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: linear-gradient(to bottom right, var(--primary-green), var(--primary-green-darker));
+    color: var(--bg-color);
+    border: 1px solid var(--primary-green-darker);
+    padding: 10px 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content-area {
+        margin-left: 0;
+        padding: 80px 20px 20px 20px; /* Increased top padding for menu toggle */
+        max-width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .page-header h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .page-header {
+        border-image-source: linear-gradient(to right, var(--primary-green) 60%, var(--secondary-brown) 100%);
+    }
+    blockquote {
+        padding: 15px 20px;
+    }
+}
